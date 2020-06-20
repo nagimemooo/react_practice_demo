@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+//用來改變資料內容的範例
 class ChangeData extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class ChangeData extends Component {
           <button onClick={this.handleClick}>
             {this.state.isRightData === true
               ? "點我更改state(isRightData)"
-              : "重新出現"}
+              : "沒設定什麼"}
           </button>
         </div>
       </div>

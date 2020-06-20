@@ -1,19 +1,17 @@
 import React, { Component } from "react";
+
+//拿資料及移除的範例
 class Data extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRightDad: true,
       isGetData: false,
-      Mom: ""
+      delayData: ""
     };
     this.ajaxSimulator = this.ajaxSimulator.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.dad === "Chang" && prevProps.dad !== this.props.dad)
-      this.setState({ Mom: "A是真的!" });
-  }
+
 
   //此data元件被呼叫就會做了
   componentDidMount() {
@@ -22,7 +20,7 @@ class Data extends Component {
       .getElementById("textArea")
       .append("[id:textArea]我是在Mount時新增出現在APP裡的區塊!");
     var node = document.createElement("LI");
-    var textnode = document.createTextNode("Water");
+    var textnode = document.createTextNode("Water list");
     node.appendChild(textnode);
     document.getElementById("textArea").appendChild(node);
   }
@@ -30,12 +28,17 @@ class Data extends Component {
   componentWillUnmount() {
     document.getElementById("textArea").innerHTML = "";
   }
+
+
   ajaxSimulator() {
     setTimeout(() => {
-      this.setState({ isGetData: true, Mom: "3秒後拿到的資料" });
+      this.setState({ isGetData: true, delayData: "3秒後拿到的資料" });
     }, 3000);
   }
+
+
   render() {
+    //判斷是否拿到資料前後的表現
     if (this.state.isGetData === false)
       return (
         <div className="content-bady" id="msg">
@@ -45,7 +48,7 @@ class Data extends Component {
     else
       return (
         <div className="content-bady" id="msg">
-          讀取完了 資料是{this.state.Mom}
+          讀取完了 資料是{this.state.delayData}
         </div>
       );
   }
