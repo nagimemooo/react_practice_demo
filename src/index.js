@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
-import GetApiData from './sample/GetApiData';
+import Demo from "./component/demo";
+import Input from "./component/input";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-     <App/>
+    <Input/>
+    <Demo />
   </React.StrictMode>,
   rootElement
 );
