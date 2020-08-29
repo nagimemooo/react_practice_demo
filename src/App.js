@@ -1,40 +1,32 @@
 //import React, { Component } from "react";
 import React, { useState, useEffect } from "react";
-import Data from "./Data";
-import ChangeData from "./ChangeData";
+import Data from "./useless/Data";
+import ChangeData from "./useless/ChangeData";
 import "./styles.css";
 
 const App = props => {
   
   
-//class App extends Component {
-  const [isShowData, setIsShowData] = useState(true);
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isShowData: true
-  //   };
-  //   this.handleClick = this.handleClick.bind(this);
-  //   this.genData = this.genData.bind(this);
-  //   this.changeData = this.changeData.bind(this);
-  // }
 
-  //handleClick() {
+  const [isShowData, setIsShowData] = useState(true);
+
+
+
     const handleClick = () => {
       setIsShowData(!isShowData);
-   // this.setState({ isShowData: !this.state.isShowData });
+   
   }
 
-  //genData() {
+
     const genData = () => {
-     // if (this.state.isShowData) {
+ 
     if (isShowData) {
       return <Data />;
     }
   }
- // changeData() {
+
     const changeData = () => {
-   // if (this.state.isShowData) {
+   
       if (isShowData) {
       return <ChangeData detail="A" />;
     } else {
@@ -42,11 +34,8 @@ const App = props => {
     }
   }
 
-//render拿掉
- // render() {
     return (
-      //"this".函數跟"this.state"全拿掉
-      //{this.genData()}
+      
       <div className="content-app">
         <div>
           <h3>componentDidMount</h3>
