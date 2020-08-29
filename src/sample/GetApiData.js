@@ -34,3 +34,14 @@ export default class GetApiData extends Component {
     )
   }
 };
+
+
+/*Readme: How to use it-----------------------------------*/
+// import GetApiData from './sample/GetApiData';  //add me
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(
+//   <React.StrictMode>
+//        <GetApiData/>  //add me
+//   </React.StrictMode>,
+//   rootElement
+// );

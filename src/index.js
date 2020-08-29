@@ -7,7 +7,6 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
      <App/>
-       <GetApiData/>
   </React.StrictMode>,
   rootElement
 );
