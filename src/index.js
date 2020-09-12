@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Demo from "./component/demo";
-import Input from "./component/input";
+// import SimpleTabs from "./component/SimpleTabs";
+// import Input from "./component/input";
+ import TaskMain from "./component/TaskMain";
+
+import Suggest from "./component/Suggest";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-    <Input/>
-    <Demo />
+  <TaskMain/>
+    <Suggest options={['esd','feff','fsf','fdsg','ghg']}/>
   </React.StrictMode>,
   rootElement
 );
