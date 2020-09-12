@@ -1,6 +1,7 @@
 import  React, { useState, useEffect } from 'react';
 import SimpleTabs from "./SimpleTabs";
 import Input from "./input";
+import { Button } from '@material-ui/core';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -34,13 +35,24 @@ export default function TaskMain() {
         };
       }, []);
 
-      
-    
+      // 父層新增可以改變資料的地方
+      const changeData = (data) => {
+       // setRows(data)
+       setRows([])
+     
+    }
+    // 清空資料
+    const cleanData = () => {
+        setRows([])
+     }
 
   return (
 <div>
-    <Input/>
+    <Input />
     <SimpleTabs data={rows}/>
+    <button onClick={cleanData}>
+           清空資料
+          </button>
     </div>
   );
 }
