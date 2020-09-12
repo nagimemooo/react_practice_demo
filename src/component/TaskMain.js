@@ -38,17 +38,19 @@ export default function TaskMain() {
       // 父層新增可以改變資料的地方
       const changeData = (data) => {
        // setRows(data)
-       setRows([])
+       console.log(data)
+       setRows(data)
      
     }
     // 清空資料
     const cleanData = () => {
+        console.log("clean data")
         setRows([])
      }
 
   return (
 <div>
-    <Input />
+    <Input changefunc={changeData}/>
     <SimpleTabs data={rows}/>
     <button onClick={cleanData}>
            清空資料

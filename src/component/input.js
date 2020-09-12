@@ -17,13 +17,24 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function BasicTextFields() {
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const defaultRows = [
+  createData('Cupcake', 305, 3.7, 67, 4.3)
+];
+
+
+export default function BasicTextFields(props) {
   const classes = useStyles();
   const [task, inputTask] = useState("");
   const handleTaskChange = (event) => {
     inputTask(event.target.value);
   };
   const handleSubmit = (event) => {
+    props.changefunc(defaultRows)
+
     alert("A name was submitted: " + task);
     event.preventDefault();
   };
