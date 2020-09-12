@@ -1,4 +1,4 @@
-import React from 'react';
+import  React, { useState, useEffect } from 'react';
 import SimpleTabs from "./SimpleTabs";
 import Input from "./input";
 
@@ -6,7 +6,7 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
+const defaultRows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
   createData('Donut', 452, 25.0, 51, 4.9),
   createData('Eclair', 262, 16.0, 24, 6.0),
@@ -22,9 +22,20 @@ const rows = [
   createData('Oreo', 437, 18.0, 63, 4.0),
 ];
 
-
 export default function TaskMain() {
+    //以下這兩個要寫在TaskMain裡＠＠？
+    const [rows, setRows] = useState([]);
+    useEffect(() => {
+        /* componentDidMount 區*/
+        setRows(defaultRows)
+        return () => {
+          /* componentWillUnmount區 */
+         
+        };
+      }, []);
 
+      
+    
 
   return (
 <div>
