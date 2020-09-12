@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 //import Icon from '@material-ui/core/Icon';
 import AddIcon from "@material-ui/icons/Add";
+import {createData} from './helper'
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -17,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
 
 const defaultRows = [
   createData('Cupcake', 305, 3.7, 67, 4.3)

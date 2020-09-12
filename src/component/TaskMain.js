@@ -2,10 +2,10 @@ import  React, { useState, useEffect } from 'react';
 import SimpleTabs from "./SimpleTabs";
 import Input from "./input";
 import { Button } from '@material-ui/core';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+import {createData} from './helper'
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
 
 const defaultRows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
