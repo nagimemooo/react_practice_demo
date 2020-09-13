@@ -66,8 +66,8 @@ export default function BasicTextFields(props) {
           error
           id="standard-error-helper-text"
           label="Error"
-          defaultValue="Hello World"
-          helperText="Incorrect entry."
+          value={task} //不給移開會被吃掉重疊＠＠
+          helperText="text length too long."
           onChange={handleTaskChange}
         />
       )}
