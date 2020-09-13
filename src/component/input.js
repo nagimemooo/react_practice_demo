@@ -19,10 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// const defaultRows = [
-//   createData('Cupcake', 305, 3.7, 67, 4.3)
-// ];
-
 
 export default function BasicTextFields(props) {
   const classes = useStyles();
@@ -31,14 +27,14 @@ export default function BasicTextFields(props) {
     inputTask(event.target.value);
   };
   const handleSubmit = (event) => {
+   
+    //https://stackoverflow.com/questions/57918784/javascript-react-push-to-an-array-in-usestate
+   // props.data.push( createData(task, 305, 3.7, 67, 4.3))
+   // props.changefunc(props.data)
+    // 用push進去 不知道為什麼無法觸發data update的 useEffect 所以也不會render conponent
+    //改成下列的串接寫法就可以
+    props.changefunc([...props.data,createData(task, 305, 3.7, 67, 4.3)])
     
-    const defaultRows = [
-      createData(task, 305, 3.7, 67, 4.3)
-    ];
-
-    props.changefunc(defaultRows)
-
-    alert("A name was submitted: " + task);
     event.preventDefault();
   };
   

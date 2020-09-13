@@ -26,19 +26,21 @@ export default function TaskMain() {
     useEffect(() => {
         /* componentDidMount 區*/
         setRows(defaultRows)
-        return () => {
-          /* componentWillUnmount區 */
-         
-        };
-      }, []);
+        // return () => {
+        //   /* componentWillUnmount區 */
+        //   setRows([])
+        // };
+      }, []); //if have content, componentDidUpdate
 
       // 父層新增可以改變資料的地方
       const changeData = (data) => {
-       // setRows(data)
-       console.log(data)
-       setRows(data)
-     
+      setRows(data)
+       console.log("changeData"+data)
+    
     }
+
+
+
     // 清空資料
     const cleanData = () => {
         console.log("clean data")
@@ -47,8 +49,8 @@ export default function TaskMain() {
 
   return (
 <div>
-    <Input changefunc={changeData}/>
-    <SimpleTabs data={rows}/>
+    <Input data={rows} changefunc={changeData}/>
+    <SimpleTabs data={rows} />
     <button onClick={cleanData}>
            清空資料
           </button>

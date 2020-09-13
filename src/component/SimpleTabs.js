@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -59,6 +59,16 @@ export default function SimpleTabs(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    /* componentDidMount 區*/
+    console.log("useEffect  dd")
+   //測試看看裡面的資料有沒有改變的短暫區
+    // return () => {
+    //   /* componentWillUnmount區 */
+    //   setRows([])
+    // };
+  }, [props.data.length]); //if have content, componentDidUpdate
+  
 
   return (
     <div className={classes.root}>
@@ -72,7 +82,14 @@ export default function SimpleTabs(props) {
       </AppBar>
       <TabPanel value={value} index={0}>
         Item One
-        <EnhancedTable data={props.data}/>
+      
+          {/* {props.data.lengh>0 && (
+      <EnhancedTable data={props.data}/>
+      )} */}
+ 
+ <EnhancedTable data={props.data}/>
+
+  
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
