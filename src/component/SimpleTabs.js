@@ -78,7 +78,7 @@ export default function SimpleTabs(props) {
       <EnhancedTable data={props.data}/>
       )} */}
  
- <EnhancedTable data={props.data}/>
+ <EnhancedTable data={props.data} changefunc={props.changefunc}/>
 
   
       </TabPanel>

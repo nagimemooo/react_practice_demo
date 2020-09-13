@@ -160,11 +160,11 @@ const EnhancedTableToolbar = (props) => {
     props.selectedItem.forEach(function(item) {
       const found = props.data.findIndex(element => element.name === item);
       console.log( found);
-      props.data.splice( found,1);//從索引 的位置開始，刪除 1 個元素
+       props.data.splice( found,1);//從索引 的位置開始，刪除 1 個元素
       console.log("remove "+ props.data); //列印陣列不可以用加的會看不出來
     });
-
-
+    var removed = [...props.data]; //不可以用var removed ＝props.data; 不然仍是同物件 不會渲染
+    props.changefunc(removed)
     //props.data.find 可以找出內容
     // const found = props.data.find(element => element.name === props.selectedItem);
     // console.log( found);
@@ -198,7 +198,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete" onClick={(event) => handleDeleteClick(event, numSelected)}>
+          <IconButton aria-label="delete" onClick={(event) => handleDeleteClick(event, numSelected)} >
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -308,7 +308,7 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} selectedItem={selected} data={props.data}/>
+        <EnhancedTableToolbar numSelected={selected.length} selectedItem={selected} data={props.data} changefunc={props.changefunc}/>
         <TableContainer>
           <Table
             className={classes.table}

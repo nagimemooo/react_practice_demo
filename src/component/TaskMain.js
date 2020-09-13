@@ -50,7 +50,7 @@ export default function TaskMain() {
   return (
 <div>
     <Input data={rows} changefunc={changeData}/>
-    <SimpleTabs data={rows} />
+    <SimpleTabs data={rows} changefunc={changeData}/>
     <button onClick={cleanData}>
            清空資料
           </button>
