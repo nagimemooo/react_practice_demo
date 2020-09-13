@@ -23,8 +23,16 @@ const useStyles = makeStyles((theme) => ({
 export default function BasicTextFields(props) {
   const classes = useStyles();
   const [task, inputTask] = useState("");
+  const [isOK, setIsok] = useState(true);
   const handleTaskChange = (event) => {
     inputTask(event.target.value);
+
+    setIsok(true)
+    if (event.target.value.length >=10) {
+      setIsok(false)
+    }
+
+
   };
   const handleSubmit = (event) => {
    
@@ -45,12 +53,26 @@ export default function BasicTextFields(props) {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
+
+      {isOK?(
       <TextField
         id="standard-basic"
         label="Task"
         value={task}
         onChange={handleTaskChange}
-      />
+      />):(
+
+      <TextField
+          error
+          id="standard-error-helper-text"
+          label="Error"
+          defaultValue="Hello World"
+          helperText="Incorrect entry."
+          onChange={handleTaskChange}
+        />
+      )}
+    
+
       <Button
         variant="contained"
         color="primary"
