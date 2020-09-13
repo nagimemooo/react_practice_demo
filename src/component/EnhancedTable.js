@@ -151,7 +151,35 @@ const useToolbarStyles = makeStyles((theme) => ({
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
+  const handleDeleteClick = (event, newSelected) => {
+    console.log("ODDDD");
+    console.log(newSelected);
+    console.log( props.selectedItem);
+    console.log( props.data);
+    // console.log( props.data);
+    props.selectedItem.forEach(function(item) {
+      const found = props.data.findIndex(element => element.name === item);
+      console.log( found);
+      props.data.splice( found,1);//從索引 的位置開始，刪除 1 個元素
+      console.log("remove "+ props.data); //列印陣列不可以用加的會看不出來
+    });
 
+
+    //props.data.find 可以找出內容
+    // const found = props.data.find(element => element.name === props.selectedItem);
+    // console.log( found);
+
+
+    // var ans = array.every(function(item, index, array){
+    //   console.log(item, index, array); // 物件, 索引, 全部陣列
+    //   return item.age > 10 // 當全部 age 大於 10 才能回傳 true
+    // });
+    // console.log(ans); 
+
+
+
+   };
+ 
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -170,7 +198,7 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={(event) => handleDeleteClick(event, numSelected)}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -257,6 +285,9 @@ export default function EnhancedTable(props) {
     setSelected(newSelected);
   };
 
+
+
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -277,7 +308,7 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} selectedItem={selected} data={props.data}/>
         <TableContainer>
           <Table
             className={classes.table}
