@@ -1,32 +1,37 @@
-import React from 'react';
 
-class Suggest extends React.Component{
-  
-    getValue(){
-      return this.refs.lowlevelinput.valaue;
+import React , { useRef }from 'react';
+
+
+  const Suggest=(props)=>{
+    // getValue(){
+    //   return this.refs.lowlevelinput.valaue;
+    // }
+
+    const handleClick = () => {
+      inputRef.current.focus(); //滑鼠會跳到input的欄位
     }
-    render(){
+    const inputRef = useRef(null);
       const randomid=Math.random().toString(16).substring(2);
       return (
        <div>
          <input 
            list={randomid}
-           defaultValue={this.props.defaultValue}
-           ref='lowlevelinput'
-           id={this.props.id}
+           defaultValue={props.defaultValue}
+           ref={inputRef}
+           id={props.id}
            />  
           <datalist id={randomid} >
-          {this.props.options.map((item,idx)=>
+          {props.options.map((item,idx)=>
              <option value={item} key={idx}/>
            )}</datalist>
+           <button onClick={handleClick}>click me</button>
        </div>
       );
-    }
+
   }
-  export default Suggest;
-  // ReactDOM.render(
-  //   <div>
-  //     <Suggest options={['esd','feff','fsf','fdsg','ghg']}/>
-  //   </div>,
-  //   document.getElementById('app')
-  // );
+  
+export default SuggestOpt;
+//1.class Suggest extends React.Component{
+//改成const SuggestOpt=(props)=>{
+//2.拿掉render(){}
+//3.改寫ref
