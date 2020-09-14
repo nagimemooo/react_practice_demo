@@ -1,6 +1,6 @@
 import  React, { useState, useEffect } from 'react';
 import SimpleTabs from "./SimpleTabs";
-import Input from "./input";
+import InputBar from "./InputBar";
 import { Button } from '@material-ui/core';
 import {createData} from './helper'
 
@@ -49,7 +49,7 @@ export default function TaskMain() {
 
   return (
 <div>
-    <Input data={rows} changefunc={changeData}/>
+    <InputBar data={rows} changefunc={changeData}/>
     <SimpleTabs data={rows} changefunc={changeData}/>
     <button onClick={cleanData}>
            清空資料
