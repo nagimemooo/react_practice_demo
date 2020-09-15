@@ -1,7 +1,6 @@
 import  React, { useState, useEffect } from 'react';
 import SimpleTabs from "./SimpleTabs";
 import InputBar from "./InputBar";
-import { Button } from '@material-ui/core';
 import {createData} from './helper'
 
 const defaultRows = [

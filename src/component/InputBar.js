@@ -5,7 +5,15 @@ import Button from "@material-ui/core/Button";
 //import Icon from '@material-ui/core/Icon';
 import AddIcon from "@material-ui/icons/Add";
 import {createData} from './helper'
-
+import {
+  OutlinedInput,
+  InputAdornment,
+  InputLabel,
+  Popper,
+  List,
+  ListItem,
+} from '@material-ui/core';
+import { css } from 'emotion';
 import Suggest from "./Suggest";
 
 
@@ -19,7 +27,22 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
     width: "100px"
-  }
+  },
+  //   Field: css` //emotion套件寫法
+//   margin: 20px 0;
+// `,
+Field: {
+  margin: '20px 0',
+  },
+  ErrorDiv: css`
+  height: 11px;
+  font-size: 12px;
+  color: #ea645e;
+  font-weight: Regular;
+  line-height: 14px;
+  letter-spacing: 0.73px;
+  margin-top: 8px;
+`,
 }));
 
 
@@ -28,6 +51,34 @@ export default function BasicTextFields(props) {
   const classes = useStyles();
   const [task, inputTask] = useState("");
   const [isOK, setIsok] = useState(true);
+  const [TaskName, setTaskName] = useState('');
+  const [TaskNamelen, setTaskNamelen] = useState(0);
+  const [isValidName, setIsValidName] = useState(true);
+  const [errorText, setErrorText] = useState('');
+  const handleChangeValue = (e, fieldName) => {
+    const { name } = e.target;
+    const { value } = e.target;
+    if (value) {
+      console.log(value)
+  
+     // setDeviceInfo(addFieldValue(name, value, deviceInfo));
+      if (fieldName === 'TaskName') {
+        setTaskName(value);
+        const len = [...value].length;
+        if (TaskNamelen > 30) {
+          // const errorTaskName = formatMessage({
+          //   id: 'errorTaskName',
+          // });
+          setIsValidName(false);
+          // setErrorText(errorTaskName);
+          setErrorText("no");
+        }
+        setTaskNamelen(len);
+      }
+    } else {
+     // setDeviceInfo(removeFieldValue(name, deviceInfo));
+    }
+  };
   const handleTaskChange = (event) => {
     inputTask(event.target.value);
 
@@ -75,8 +126,27 @@ export default function BasicTextFields(props) {
           onChange={handleTaskChange}
         />
       )}
-    
-    <Suggest  options={['esd','feff','fsf','fdsg','ghg']}/>
+
+        
+      <OutlinedInput
+            name="TaskName"
+            onChange={e => handleChangeValue(e, 'TaskName')}
+            error={ !isValidName
+            }
+            // value={getFieldValue('TaskName', deviceInfo)}
+            // value='TaskName'
+            // defaultValue="Task"
+            notched
+            endAdornment={
+              <InputAdornment position="end">
+                {`${TaskNamelen}/30`}
+              </InputAdornment>
+            }
+          /> 
+          {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
+          <label>{errorText}</label> 
+
+    <Suggest options={['life','blog','front-web','go','design','others']}/>
       <Button
         variant="contained"
         color="primary"
