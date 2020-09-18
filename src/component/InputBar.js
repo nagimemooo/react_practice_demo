@@ -80,27 +80,24 @@ export default function BasicTextFields(props) {
   const handleChangeValue = (e, fieldName) => {
     const { name } = e.target;
     const { value } = e.target;
-    if (value) {
-      console.log(value);
 
-      // setDeviceInfo(addFieldValue(name, value, deviceInfo));
-      if (fieldName === "TaskName") {
-        setTaskName(value);
-        const len = [...value].length;
-        if (TaskNamelen > 10) {
-          // const errorTaskName = formatMessage({
-          //   id: 'errorTaskName',
-          // });
-          setIsValidName(false);
-          setErrorText("no");
-        } else {
-          setIsValidName(true);
-          setErrorText("");
-        }
-        setTaskNamelen(len);
+    console.log(value);
+
+    // setDeviceInfo(addFieldValue(name, value, deviceInfo));
+    if (fieldName === "TaskName") {
+      setTaskName(value);
+      const len = [...value].length;
+      if (TaskNamelen > 10) {
+        // const errorTaskName = formatMessage({
+        //   id: 'errorTaskName',
+        // });
+        setIsValidName(false);
+        setErrorText("no");
+      } else {
+        setIsValidName(true);
+        setErrorText("");
       }
-    } else {
-      // setDeviceInfo(removeFieldValue(name, deviceInfo));
+      setTaskNamelen(len);
     }
   };
   const handleTaskChange = (event) => {
