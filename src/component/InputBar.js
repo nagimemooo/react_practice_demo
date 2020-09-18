@@ -13,6 +13,7 @@ import {
   List,
   ListItem,
 } from "@material-ui/core";
+import FormControl from "@material-ui/core/FormControl";
 import { css } from "emotion";
 import Suggest from "./Suggest";
 
@@ -22,6 +23,16 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: "25ch",
     },
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    width: "fit-content",
+  },
+  formControl: {
+    marginTop: theme.spacing.unit * 2,
+    minWidth: 200,
+    maxWidth: 300,
   },
   button: {
     margin: theme.spacing(1),
@@ -96,38 +107,37 @@ export default function BasicTextFields(props) {
   };
 
   return (
-    <form
-      className={classes.root}
-      noValidate
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <TextField
-        id="standard-basic"
-        error={!isOK}
-        label="Task"
-        helperText={isOK ? "" : "text length too long."}
-        value={task}
-        onChange={handleTaskChange}
-      />
-
-      <InputLabel htmlFor="TaskName">TaskName</InputLabel>
-      <OutlinedInput
-        name="TaskName"
-        onChange={(e) => handleChangeValue(e, "TaskName")}
-        error={!isValidName}
-        // label="Task"
-        variant="outlined"
-        value={TaskName}
-        helperText={isValidName ? "" : "text length too long."}
-        notched
-        endAdornment={
-          <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
-        }
-      />
-      {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
-      <label>{errorText}</label>
-
+    <form className={classes.form} noValidate autoComplete="off">
+      <div>
+        <FormControl className={classes.formControl} variant="outlined">
+          <TextField
+            id="standard-basic"
+            error={!isOK}
+            label="Task"
+            helperText={isOK ? "" : "text length too long."}
+            value={task}
+            onChange={handleTaskChange}
+          />
+        </FormControl>
+        <FormControl className={classes.formControl} variant="outlined">
+          <InputLabel htmlFor="TaskName">TaskName</InputLabel>
+          <OutlinedInput
+            name="TaskName"
+            onChange={(e) => handleChangeValue(e, "TaskName")}
+            error={!isValidName}
+            variant="outlined"
+            value={TaskName}
+            helperText={isValidName ? "" : "text length too long."}
+            notched
+            endAdornment={
+              <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
+            }
+            labelWidth="100"
+          />
+          {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
+          <label>{errorText}</label>
+        </FormControl>
+      </div>
       <Suggest
         options={["life", "blog", "front-web", "go", "design", "others"]}
       />
