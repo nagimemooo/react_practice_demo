@@ -107,6 +107,10 @@ export default function BasicTextFields(props) {
     event.preventDefault();
   };
   const inputRef = useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputRef.current.offsetWidth);
+  }, []);
   return (
     <form className={classes.form} noValidate autoComplete="off">
       <div>
@@ -129,13 +133,12 @@ export default function BasicTextFields(props) {
             onChange={(e) => handleChangeValue(e, "TaskName")}
             error={!isValidName}
             variant="outlined"
-            value={TaskName}
+            //value={TaskName ? TaskName : undefined}
             helperText={isValidName ? "" : "text length too long."}
-            notched
             endAdornment={
               <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
             }
-            labelWidth={inputRef ? "100" : "0"}
+            labelWidth={labelWidth} //這樣寫 莫名其妙寫好了＠＠
           />
           {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
           <label>{errorText}</label>
