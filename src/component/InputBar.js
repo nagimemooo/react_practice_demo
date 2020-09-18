@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import { css } from "emotion";
+import styled from "@emotion/styled";
 import Suggest from "./Suggest";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,13 +39,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     width: "100px",
   },
-  //   Field: css` //emotion套件寫法
-  //   margin: 20px 0;
-  // `,
+  Red: {
+    color: "red", //color: red 沒有加雙引號是錯誤寫法
+  },
   Field: {
     margin: "20px 0",
   },
   ErrorDiv: css`
+    //不知道為什麼這種寫法引用沒效果 解析不出來
     height: 11px;
     font-size: 12px;
     color: #ea645e;
@@ -54,6 +56,17 @@ const useStyles = makeStyles((theme) => ({
     margin-top: 8px;
   `,
 }));
+
+const ErrorLabel = styled.label`
+  //換一種寫法
+  height: 11px;
+  font-size: 12px;
+  color: #ea645e;
+  font-weight: Regular;
+  line-height: 14px;
+  letter-spacing: 0.73px;
+  margin-top: 8px;
+`;
 
 export default function BasicTextFields(props) {
   const classes = useStyles();
@@ -79,8 +92,10 @@ export default function BasicTextFields(props) {
           //   id: 'errorTaskName',
           // });
           setIsValidName(false);
-          // setErrorText(errorTaskName);
           setErrorText("no");
+        } else {
+          setIsValidName(true);
+          setErrorText("");
         }
         setTaskNamelen(len);
       }
@@ -112,50 +127,55 @@ export default function BasicTextFields(props) {
     setLabelWidth(inputRef.current.offsetWidth);
   }, []);
   return (
-    <form className={classes.form} noValidate autoComplete="off">
-      <div>
-        <FormControl className={classes.formControl} variant="outlined">
-          <TextField
-            id="standard-basic"
-            error={!isOK}
-            label="Task"
-            helperText={isOK ? "" : "text length too long."}
-            value={task}
-            onChange={handleTaskChange}
-          />
-        </FormControl>
-        <FormControl className={classes.formControl} variant="outlined">
-          <InputLabel ref={inputRef} htmlFor="TaskName">
-            TaskName
-          </InputLabel>
-          <OutlinedInput
-            name="TaskName"
-            onChange={(e) => handleChangeValue(e, "TaskName")}
-            error={!isValidName}
-            variant="outlined"
-            //value={TaskName ? TaskName : undefined}
-            helperText={isValidName ? "" : "text length too long."}
-            endAdornment={
-              <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
-            }
-            labelWidth={labelWidth} //這樣寫 莫名其妙寫好了＠＠
-          />
-          {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
-          <label>{errorText}</label>
-        </FormControl>
-      </div>
-      <Suggest
-        options={["life", "blog", "front-web", "go", "design", "others"]}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<AddIcon>send</AddIcon>}
-        type="submit"
-      >
-        Send
-      </Button>
-    </form>
+    <div>
+      <form className={classes.form} noValidate autoComplete="off">
+        <div>
+          <FormControl className={classes.formControl} variant="outlined">
+            <TextField
+              id="standard-basic"
+              error={!isOK}
+              label="Task"
+              helperText={isOK ? "" : "text length too long."}
+              value={task}
+              onChange={handleTaskChange}
+            />
+          </FormControl>
+          <FormControl className={classes.formControl} variant="outlined">
+            <InputLabel ref={inputRef} htmlFor="TaskName">
+              TaskName
+            </InputLabel>
+            <OutlinedInput
+              name="TaskName"
+              onChange={(e) => handleChangeValue(e, "TaskName")}
+              error={!isValidName}
+              variant="outlined"
+              //value={TaskName ? TaskName : undefined}
+              helperText={isValidName ? "" : "text length too long."}
+              endAdornment={
+                <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
+              }
+              labelWidth={labelWidth} //這樣寫 莫名其妙寫好了＠＠
+            />
+            {/*不知道為什麼這種寫法引用沒效果 解析不出來
+             <label className={classes.ErrorDiv}>{errorText}</label> */}
+
+            <ErrorLabel>{errorText}</ErrorLabel>
+          </FormControl>
+        </div>
+        <Suggest
+          options={["life", "blog", "front-web", "go", "design", "others"]}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          endIcon={<AddIcon>send</AddIcon>}
+          type="submit"
+        >
+          Send
+        </Button>
+      </form>
+      <div className={classes.Red}>reee</div>
+    </div>
   );
 }
