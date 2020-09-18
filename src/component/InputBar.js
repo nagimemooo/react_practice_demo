@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -63,6 +63,7 @@ export default function BasicTextFields(props) {
   const [TaskNamelen, setTaskNamelen] = useState(0);
   const [isValidName, setIsValidName] = useState(true);
   const [errorText, setErrorText] = useState("");
+
   const handleChangeValue = (e, fieldName) => {
     const { name } = e.target;
     const { value } = e.target;
@@ -105,7 +106,7 @@ export default function BasicTextFields(props) {
 
     event.preventDefault();
   };
-
+  const inputRef = useRef(null);
   return (
     <form className={classes.form} noValidate autoComplete="off">
       <div>
@@ -120,7 +121,9 @@ export default function BasicTextFields(props) {
           />
         </FormControl>
         <FormControl className={classes.formControl} variant="outlined">
-          <InputLabel htmlFor="TaskName">TaskName</InputLabel>
+          <InputLabel ref={inputRef} htmlFor="TaskName">
+            TaskName
+          </InputLabel>
           <OutlinedInput
             name="TaskName"
             onChange={(e) => handleChangeValue(e, "TaskName")}
@@ -132,7 +135,7 @@ export default function BasicTextFields(props) {
             endAdornment={
               <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
             }
-            labelWidth="100"
+            labelWidth={inputRef ? "100" : "0"}
           />
           {/* <label className={formStyles.ErrorDiv}>{errorText}</label> */}
           <label>{errorText}</label>
