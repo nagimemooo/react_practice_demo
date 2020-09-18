@@ -109,23 +109,15 @@ export default function BasicTextFields(props) {
       onSubmit={handleSubmit}
     >
 
-      {isOK?(
+      
       <TextField
         id="standard-basic"
+        error={!isOK}
         label="Task"
+        helperText={isOK?"":"text length too long."}
         value={task}
         onChange={handleTaskChange}
-      />):(
-
-      <TextField
-          error
-          id="standard-error-helper-text"
-          label="Error"
-          value={task} //不給移開會被吃掉重疊＠＠
-          helperText="text length too long."
-          onChange={handleTaskChange}
-        />
-      )}
+      />
 
         
       <OutlinedInput
