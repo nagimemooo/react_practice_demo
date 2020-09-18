@@ -78,19 +78,12 @@ export default function BasicTextFields(props) {
   const [errorText, setErrorText] = useState("");
 
   const handleChangeValue = (e, fieldName) => {
-    const { name } = e.target;
     const { value } = e.target;
-
     console.log(value);
-
-    // setDeviceInfo(addFieldValue(name, value, deviceInfo));
     if (fieldName === "TaskName") {
       setTaskName(value);
       const len = [...value].length;
       if (TaskNamelen > 10) {
-        // const errorTaskName = formatMessage({
-        //   id: 'errorTaskName',
-        // });
         setIsValidName(false);
         setErrorText("no");
       } else {
@@ -147,7 +140,6 @@ export default function BasicTextFields(props) {
               error={!isValidName}
               variant="outlined"
               //value={TaskName ? TaskName : undefined}
-              helperText={isValidName ? "" : "text length too long."}
               endAdornment={
                 <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
               }
@@ -172,7 +164,6 @@ export default function BasicTextFields(props) {
           Send
         </Button>
       </form>
-      <div className={classes.Red}>reee</div>
     </div>
   );
 }
