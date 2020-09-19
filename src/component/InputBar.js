@@ -17,7 +17,7 @@ import {
 import FormControl from "@material-ui/core/FormControl";
 import { css } from "emotion";
 import styled from "@emotion/styled";
-import Suggest from "./Suggest";
+import SuggestXInput from "./SuggestXInput";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,8 +71,6 @@ const ErrorLabel = styled.label`
 
 export default function BasicTextFields(props) {
   const classes = useStyles();
-  const [task, inputTask] = useState("");
-  const [isOK, setIsok] = useState(true);
   const [TaskName, setTaskName] = useState("");
   const [TaskNamelen, setTaskNamelen] = useState(0);
   const [isValidName, setIsValidName] = useState(true);
@@ -94,16 +92,9 @@ export default function BasicTextFields(props) {
       setTaskNamelen(len);
     }
   };
-  const handleTaskChange = (event) => {
-    inputTask(event.target.value);
 
-    setIsok(true);
-    if (event.target.value.length >= 10) {
-      setIsok(false);
-    }
-  };
   const handleSubmit = (event) => {
-    if (task === "") {
+    if (TaskName === "") {
     }
 
     //https://stackoverflow.com/questions/57918784/javascript-react-push-to-an-array-in-usestate
@@ -111,7 +102,7 @@ export default function BasicTextFields(props) {
     // props.changefunc(props.data)
     // 用push進去 不知道為什麼無法觸發data update的 useEffect 所以也不會render conponent
     //改成下列的串接寫法就可以
-    props.changefunc([...props.data, createData(task, 305, 3.7, 67, 4.3)]);
+    props.changefunc([...props.data, createData(TaskName, 305, 3.7, 67, 4.3)]);
 
     event.preventDefault();
   };
@@ -124,58 +115,34 @@ export default function BasicTextFields(props) {
     <div>
       <form className={classes.form} noValidate autoComplete="off">
         <div>
-          <FormControl className={classes.formControl} variant="outlined">
-            <TextField
-              id="standard-basic"
-              error={!isOK}
-              label="Task"
-              helperText={isOK ? "" : "text length too long."}
-              value={task}
-              onChange={handleTaskChange}
-            />
-          </FormControl>
-
           <FormControl className={css(classes.margin, classes.textField)}>
-            <InputLabel htmlFor="standard-basic">TaskName</InputLabel>
+            <InputLabel ref={inputRef} htmlFor="TaskName">
+              TaskName
+            </InputLabel>
             <Input
               id="standard-basic"
               error={!isValidName}
               label="TaskName"
-              helperText={isOK ? "" : "text length too long."}
+              // helperText={isOK ? "" : "text length too long."} not
               // value={task}
               onChange={(e) => handleChangeValue(e, "TaskName")}
               endAdornment={
                 <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
               }
             />
-
-            <ErrorLabel>{errorText}</ErrorLabel>
-          </FormControl>
-
-          <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel ref={inputRef} htmlFor="TaskName">
-              TaskName
-            </InputLabel>
-            <OutlinedInput
-              name="TaskName"
-              onChange={(e) => handleChangeValue(e, "TaskName")}
-              error={!isValidName}
-              variant="outlined"
-              //value={TaskName ? TaskName : undefined}
-              endAdornment={
-                <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
-              }
-              labelWidth={labelWidth} //這樣寫 莫名其妙寫好了＠＠
-            />
             {/*不知道為什麼這種寫法引用沒效果 解析不出來
              <label className={classes.ErrorDiv}>{errorText}</label> */}
 
             <ErrorLabel>{errorText}</ErrorLabel>
           </FormControl>
+
+          <FormControl className={classes.formControl} variant="outlined">
+            <SuggestXInput
+              options={["life", "blog", "front-web", "go", "design", "others"]}
+            />
+          </FormControl>
         </div>
-        <Suggest
-          options={["life", "blog", "front-web", "go", "design", "others"]}
-        />
+
         <Button
           variant="contained"
           color="primary"
