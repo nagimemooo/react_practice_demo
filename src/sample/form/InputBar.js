@@ -15,7 +15,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { css } from "emotion";
 import styled from "@emotion/styled";
 import Input from "@material-ui/core/Input";
-// HOW USE------
+// HOW USE----------------------------
 // import InputBar from "./sample/form/InputBar";
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(
@@ -24,7 +24,7 @@ import Input from "@material-ui/core/Input";
 //   </React.StrictMode>,
 //   rootElement
 // );
-// HOW USE------
+// HOW USE----------------------------
 
 const useStyles = makeStyles((theme) => ({
   root: {
