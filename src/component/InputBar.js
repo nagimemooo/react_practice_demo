@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 //import Icon from '@material-ui/core/Icon';
 import AddIcon from "@material-ui/icons/Add";
 import { createData } from "./helper";
+import Input from "@material-ui/core/Input";
 import {
   OutlinedInput,
   InputAdornment,
@@ -85,7 +86,7 @@ export default function BasicTextFields(props) {
       const len = [...value].length;
       if (TaskNamelen > 10) {
         setIsValidName(false);
-        setErrorText("no");
+        setErrorText("text length too long.");
       } else {
         setIsValidName(true);
         setErrorText("");
@@ -102,6 +103,9 @@ export default function BasicTextFields(props) {
     }
   };
   const handleSubmit = (event) => {
+    if (task === "") {
+    }
+
     //https://stackoverflow.com/questions/57918784/javascript-react-push-to-an-array-in-usestate
     // props.data.push( createData(task, 305, 3.7, 67, 4.3))
     // props.changefunc(props.data)
@@ -130,6 +134,24 @@ export default function BasicTextFields(props) {
               onChange={handleTaskChange}
             />
           </FormControl>
+
+          <FormControl className={css(classes.margin, classes.textField)}>
+            <InputLabel htmlFor="standard-basic">TaskName</InputLabel>
+            <Input
+              id="standard-basic"
+              error={!isValidName}
+              label="TaskName"
+              helperText={isOK ? "" : "text length too long."}
+              // value={task}
+              onChange={(e) => handleChangeValue(e, "TaskName")}
+              endAdornment={
+                <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
+              }
+            />
+
+            <ErrorLabel>{errorText}</ErrorLabel>
+          </FormControl>
+
           <FormControl className={classes.formControl} variant="outlined">
             <InputLabel ref={inputRef} htmlFor="TaskName">
               TaskName
@@ -159,7 +181,8 @@ export default function BasicTextFields(props) {
           color="primary"
           className={classes.button}
           endIcon={<AddIcon>send</AddIcon>}
-          type="submit"
+          // type="submit"
+          onClick={handleSubmit}
         >
           Send
         </Button>

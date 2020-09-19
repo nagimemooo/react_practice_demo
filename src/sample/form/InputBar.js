@@ -14,7 +14,7 @@ import {
 import FormControl from "@material-ui/core/FormControl";
 import { css } from "emotion";
 import styled from "@emotion/styled";
-
+import Input from "@material-ui/core/Input";
 // HOW USE------
 // import InputBar from "./sample/form/InputBar";
 // const rootElement = document.getElementById("root");
@@ -133,6 +133,23 @@ export default function BasicTextFields(props) {
               onChange={handleTaskChange}
             />
           </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="standard-basic">TaskName</InputLabel>
+            <Input
+              id="standard-basic"
+              error={!isValidName}
+              label="TaskName"
+              helperText={isOK ? "" : "text length too long."}
+              // value={task}
+              onChange={(e) => handleChangeValue(e, "TaskName")}
+              endAdornment={
+                <InputAdornment position="end">{`${TaskNamelen}/10`}</InputAdornment>
+              }
+            />
+
+            <ErrorLabel>{errorText}</ErrorLabel>
+          </FormControl>
+
           <FormControl className={classes.formControl} variant="outlined">
             <InputLabel ref={inputRef} htmlFor="TaskName">
               TaskName
