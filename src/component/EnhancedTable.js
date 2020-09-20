@@ -195,7 +195,7 @@ const EnhancedTableToolbar = (props) => {
           className={classes.title}
           color="inherit"
           variant="subtitle1"
-          component="div"
+          component="span"
         >
           {numSelected} selected
         </Typography>
@@ -204,7 +204,7 @@ const EnhancedTableToolbar = (props) => {
           className={classes.title}
           variant="h6"
           id="tableTitle"
-          component="div"
+          component="span"
         >
           Task List
         </Typography>
