@@ -138,21 +138,21 @@ export default function BasicTextFields(props) {
 
           <FormControl className={classes.formControl} variant="outlined">
             <SuggestXInput
+              defaultValue="Input type"
               options={["life", "blog", "front-web", "go", "design", "others"]}
             />
           </FormControl>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            endIcon={<AddIcon>send</AddIcon>}
+            // type="submit"
+            onClick={handleSubmit}
+          >
+            Send
+          </Button>
         </div>
-
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          endIcon={<AddIcon>send</AddIcon>}
-          // type="submit"
-          onClick={handleSubmit}
-        >
-          Send
-        </Button>
       </form>
     </div>
   );
