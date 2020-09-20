@@ -1,7 +1,7 @@
-import  React, { useState, useEffect } from 'react';
-import SimpleTabs from "./SimpleTabs";
-import InputBar from "./InputBar";
-import {createData} from './helper'
+import React, { useState, useEffect } from 'react';
+import SimpleTabs from './SimpleTabs';
+import InputBar from './InputBar';
+import { createData } from './helper';
 
 const defaultRows = [
   createData('Cupcake', 305, 3.7, 67, 4.3),
@@ -20,39 +20,34 @@ const defaultRows = [
 ];
 
 export default function TaskMain() {
-    //以下這兩個要寫在TaskMain裡＠＠？
-    const [rows, setRows] = useState([]);
-    useEffect(() => {
-        /* componentDidMount 區*/
-        setRows(defaultRows)
-        // return () => {
-        //   /* componentWillUnmount區 */
-        //   setRows([])
-        // };
-      }, []); //if have content, componentDidUpdate
+  //以下這兩個要寫在TaskMain裡＠＠？
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    /* componentDidMount 區*/
+    setRows(defaultRows);
+    // return () => {
+    //   /* componentWillUnmount區 */
+    //   setRows([])
+    // };
+  }, []); //if have content, componentDidUpdate
 
-      // 父層新增可以改變資料的地方
-      const changeData = (data) => {
-      setRows(data)
-       console.log("changeData"+data)
-    
-    }
+  // 父層新增可以改變資料的地方
+  const changeData = (data) => {
+    setRows(data);
+    console.log('changeData' + data);
+  };
 
-
-
-    // 清空資料
-    const cleanData = () => {
-        console.log("clean data")
-        setRows([])
-     }
+  // 清空資料
+  const cleanData = () => {
+    console.log('clean data');
+    setRows([]);
+  };
 
   return (
-<div>
-    <InputBar data={rows} changefunc={changeData}/>
-    <SimpleTabs data={rows} changefunc={changeData}/>
-    <button onClick={cleanData}>
-           清空資料
-          </button>
+    <div>
+      <InputBar data={rows} changefunc={changeData} />
+      <SimpleTabs data={rows} changefunc={changeData} />
+      <button onClick={cleanData}>清空資料</button>
     </div>
   );
 }
