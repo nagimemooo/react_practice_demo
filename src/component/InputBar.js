@@ -17,7 +17,7 @@ import {
 import FormControl from '@material-ui/core/FormControl';
 import { css } from 'emotion';
 import styled from '@emotion/styled';
-import SuggestXInput from './SuggestXInput';
+import InputSuggest from './InputSuggest';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -140,7 +140,7 @@ export default function BasicTextFields(props) {
           </FormControl>
 
           <FormControl className={classes.formControl} variant="outlined">
-            <SuggestXInput
+            <InputSuggest
               defaultValue="Input type"
               options={['life', 'blog', 'front-web', 'go', 'design', 'others']}
               func={handleTypeChange}
