@@ -38,10 +38,19 @@ const Suggest = (props) => {
   const classes = useStyles(); // const handleClick = () => {
   //   inputRef.current.focus(); //滑鼠會跳到input的欄位
   // };
-
+  const [LabelCss, setLabelCss] = useState(myStyle.Lable);
   const handleChangeValue = (event) => {
     console.log(inputRef.current.value);
+
+    const len = inputRef.current.value.length;
+    if (len === 0) {
+      console.log('0');
+      setLabelCss(myStyle.Lable);
+    }
     props.func(inputRef.current.value);
+  };
+  const handleFoucus = () => {
+    setLabelCss(myStyle.LableMove);
   };
 
   const inputRef = useRef(null);
@@ -54,8 +63,9 @@ const Suggest = (props) => {
         id={props.id}
         css={[myStyle.Input.base, myStyle.Input.focus]}
         onChange={handleChangeValue}
+        onFocus={handleFoucus}
       />
-      <label htmlFor="TaskName" css={myStyle.Lable}>
+      <label htmlFor="TaskName" css={LabelCss}>
         Type
       </label>
       <datalist id={randomid}>

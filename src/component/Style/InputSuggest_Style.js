@@ -4,9 +4,10 @@ export default function AppStyle() {}
 
 export const myStyle = {
   Lable: css`
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 10px;
     position: absolute;
+
     color: rgba(0, 0, 0, 0.54);
     padding: 0;
     font-size: 1rem;
@@ -14,9 +15,31 @@ export const myStyle = {
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.00938em;
-    transform: translate(10px, 10px) scale(1);
-     z-index: 1;  //要夾到前面
+    transform: translate(0px, 0px) scale(1);
+
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
   `,
+  LableMove: css`
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 0;
+    font-size: 1rem;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.00938em;
+    transform: translate(-20px, -20px) scale(0.8);
+
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+  `,
+
   FormControl: css`
     border: 0;
     margin: 0;
@@ -56,22 +79,26 @@ export const myStyle = {
         //這邊＆後面不能有空白喔
         border: 1px solid #3f51b5;
       }
-      &:focus + label {
-        //這邊＆後面不能有空白喔
-        top: 0;
-        left: 0;
-        position: relative;
-        color: #3f51b5;
-        padding: 0;
-        font-size: 1rem;
-        font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: 0.00938em;
-        transform: translate(0, -50px) scale(1, 1);
-        background-color: #fff;
-        width: 50px;
-      }
+      // &:visited {
+      //   z-index: 0;
+      //   background-color: #fff;
+      // }
+      // &:focus + label {
+      //   //這邊＆後面不能有空白喔
+      //   top: 0;
+      //   left: 0;
+      //   position: relative;
+      //   color: #3f51b5;
+      //   padding: 0;
+      //   font-size: 1rem;
+      //   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      //   font-weight: 400;
+      //   line-height: 1;
+      //   letter-spacing: 0.00938em;
+      //   transform: translate(0, -50px) scale(1, 1);
+      //   background-color: #fff;
+      //   width: 50px;
+      // }
     `,
   },
 };
