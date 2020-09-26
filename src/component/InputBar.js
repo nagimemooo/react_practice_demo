@@ -28,8 +28,13 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     display: 'flex',
+
     flexDirection: 'column',
     width: 'fit-content',
+  },
+  formDiv: {
+    display: 'flex',
+    alignItems: 'center', //---排列上下置中
   },
   formControl: {
     margin: '1',
@@ -117,7 +122,7 @@ export default function BasicTextFields(props) {
   return (
     <div>
       <form className={classes.form} noValidate autoComplete="off">
-        <div>
+        <div className={classes.formDiv}>
           <FormControl className={css(classes.margin, classes.textField)}>
             <InputLabel ref={inputRef} htmlFor="TaskName">
               TaskName
@@ -146,6 +151,7 @@ export default function BasicTextFields(props) {
               func={handleTypeChange}
             />
           </FormControl>
+
           <Button
             variant="contained"
             color="primary"
