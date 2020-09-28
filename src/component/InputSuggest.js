@@ -1,41 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { myStyle } from './Style/InputSuggest_Style';
 /** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
-const useStyles = makeStyles((theme) => ({
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 6px 10px 6px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      borderRadius: 4,
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-}));
-
 const Suggest = (props) => {
-  const classes = useStyles(); // const handleClick = () => {
+  // const handleClick = () => {
   //   inputRef.current.focus(); //滑鼠會跳到input的欄位
   // };
   const [LabelCss, setLabelCss] = useState(myStyle.Lable);
