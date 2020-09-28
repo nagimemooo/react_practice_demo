@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     display: 'flex',
-
     flexDirection: 'column',
     width: 'fit-content',
   },
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center', //---排列上下置中
   },
   formControl: {
-    margin: '1',
+    margin: '10px',
     //marginTop: theme.spacing.unit * 2,
     minWidth: 200,
     maxWidth: 300,
@@ -150,6 +149,7 @@ export default function BasicTextFields(props) {
               options={['life', 'blog', 'front-web', 'go', 'design', 'others']}
               func={handleTypeChange}
             />
+            <ErrorLabel></ErrorLabel>
           </FormControl>
 
           <Button
