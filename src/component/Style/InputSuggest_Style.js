@@ -4,7 +4,7 @@ export default function AppStyle() {}
 
 export const myStyle = {
   Lable: css`
-    top: 10px;
+    top: 15px;
     left: 10px;
     position: absolute;
 

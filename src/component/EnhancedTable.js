@@ -211,7 +211,7 @@ const EnhancedTableToolbar = (props) => {
           id="tableTitle"
           component="span"
         >
-          Task List
+          任務清單 Task List
         </Typography>
       )}
 

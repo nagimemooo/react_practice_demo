@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 300,
   },
   button: {
-    margin: '1',
-    width: '100px',
+    margin: '10px',
+    width: '130px',
   },
   Red: {
     color: 'red', //color: red 沒有加雙引號是錯誤寫法
@@ -124,7 +124,7 @@ export default function BasicTextFields(props) {
         <div className={classes.formDiv}>
           <FormControl className={css(classes.margin, classes.textField)}>
             <InputLabel ref={inputRef} htmlFor="TaskName">
-              TaskName
+              任務 TaskName
             </InputLabel>
             <Input
               id="standard-basic"
@@ -160,7 +160,7 @@ export default function BasicTextFields(props) {
             // type="submit"
             onClick={handleSubmit}
           >
-            Send
+            新增
           </Button>
         </div>
       </form>
