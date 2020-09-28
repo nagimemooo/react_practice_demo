@@ -42,15 +42,18 @@ const Suggest = (props) => {
   const handleChangeValue = (event) => {
     console.log(inputRef.current.value);
 
+    props.func(inputRef.current.value);
+  };
+  const handleFoucus = () => {
+    setLabelCss(myStyle.LableMove);
+  };
+
+  const handleBlur = () => {
     const len = inputRef.current.value.length;
     if (len === 0) {
       console.log('0');
       setLabelCss(myStyle.Lable);
     }
-    props.func(inputRef.current.value);
-  };
-  const handleFoucus = () => {
-    setLabelCss(myStyle.LableMove);
   };
 
   const inputRef = useRef(null);
@@ -64,6 +67,7 @@ const Suggest = (props) => {
         css={[myStyle.Input.base, myStyle.Input.focus]}
         onChange={handleChangeValue}
         onFocus={handleFoucus}
+        onBlur={handleBlur}
       />
       <label htmlFor="TaskName" css={LabelCss}>
         Type
