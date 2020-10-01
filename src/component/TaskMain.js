@@ -4,15 +4,15 @@ import InputBar from './InputBar';
 import { createData, statusList } from './helper';
 import * as R from 'ramda';
 const defaultRows = [
-  createData('Cupcake', 1, 'OPEN', 'blog', 4.3),
-  createData('Donut', 2, 'INPROGGRESS', 'go', 4.9),
-  createData('Eclair', 1, 'OPEN', 'go', 6.0),
-  createData('Frozen yoghurt', 2, 'OPEN', 'life', 4.0),
-  createData('Cupcake', 1, 'OPEN', '', 3.9),
-  createData('Honeycomb', 2, 'OPEN', '', 6.5),
-  createData('Ice cream sandwich', 3, 'OPEN', '', 4.3),
-  createData('Jelly Bean', 3, 'OPEN', '', 0.0),
-  createData('KitKat', 2, 'OPEN', '', 7.0),
+  createData('Cupcake', 1, statusList.Open, 'blog', 4.3),
+  createData('Donut', 2, statusList.InProgress, 'go', 4.9),
+  createData('Eclair', 1, statusList.Open, 'go', 6.0),
+  createData('Frozen yoghurt', 2, statusList.Open, 'life', 4.0),
+  createData('Cupcake', 1, statusList.Open, '', 3.9),
+  createData('Honeycomb', 2, statusList.Open, '', 6.5),
+  createData('Ice cream sandwich', 3, statusList.Open, '', 4.3),
+  createData('Jelly Bean', 3, statusList.Done, '', 0.0),
+  createData('KitKat', 2, statusList.Open, '', 7.0),
 ];
 
 export default function TaskMain() {

@@ -4,3 +4,9 @@ export const createData = (name, priority, status, type, date) => {
   // console.log("hello world!");
   return { name, priority, status, type, date };
 };
+
+export var statusList = {
+  Open: 'Open',
+  InProgress: 'In Progress',
+  Done: 'Done',
+};
