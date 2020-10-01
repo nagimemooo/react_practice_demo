@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import EnhancedTable from './EnhancedTable';
+import { statusList } from './helper';
 import * as R from 'ramda';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,9 +72,10 @@ export default function SimpleTabs(props) {
           aria-label="simple tabs example"
           centered
         >
-          <Tab label="未進行 OPEN" {...a11yProps(0)} />
-          <Tab label="進行中 IN PROGRESS" {...a11yProps(1)} />
-          <Tab label="已完成 DONE" {...a11yProps(2)} />
+          <Tab label="全部 ALL" {...a11yProps(0)} />
+          <Tab label="未進行 OPEN" {...a11yProps(1)} />
+          <Tab label="進行中 IN PROGRESS" {...a11yProps(2)} />
+          <Tab label="已完成 DONE" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -83,12 +85,23 @@ export default function SimpleTabs(props) {
       <TabPanel value={value} index={1}>
         Item Two
         <EnhancedTable
-          data={R.filter(R.propEq('name', 'Cupcake'), props.data)}
+          data={R.filter(R.propEq('status', statusList.Open), props.data)}
           changefunc={props.changefunc}
         />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
+        <EnhancedTable
+          data={R.filter(R.propEq('status', statusList.InProgress), props.data)}
+          changefunc={props.changefunc}
+        />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Item Four
+        <EnhancedTable
+          data={R.filter(R.propEq('status', statusList.Done), props.data)}
+          changefunc={props.changefunc}
+        />
       </TabPanel>
     </div>
   );
