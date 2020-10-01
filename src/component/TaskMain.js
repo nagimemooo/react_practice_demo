@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import SimpleTabs from './SimpleTabs';
 import InputBar from './InputBar';
-import { createData } from './helper';
-
+import { createData, statusList } from './helper';
+import * as R from 'ramda';
 const defaultRows = [
   createData('Cupcake', 1, 'OPEN', 'blog', 4.3),
-  createData('Donut', 2, 'OPEN', 'go', 4.9),
+  createData('Donut', 2, 'INPROGGRESS', 'go', 4.9),
   createData('Eclair', 1, 'OPEN', 'go', 6.0),
   createData('Frozen yoghurt', 2, 'OPEN', 'life', 4.0),
-  createData('Gingerbread', 1, 'OPEN', '', 3.9),
+  createData('Cupcake', 1, 'OPEN', '', 3.9),
   createData('Honeycomb', 2, 'OPEN', '', 6.5),
   createData('Ice cream sandwich', 3, 'OPEN', '', 4.3),
   createData('Jelly Bean', 3, 'OPEN', '', 0.0),
@@ -38,11 +38,18 @@ export default function TaskMain() {
     console.log('clean data');
     setRows([]);
   };
+  const Data = () => {
+    console.log(' data');
+    console.log(rows);
+    var s = R.filter(R.propEq('name', 'Cupcake'), rows);
+    console.log(s);
+  };
 
   return (
     <div>
       <InputBar data={rows} changefunc={changeData} />
       <SimpleTabs data={rows} changefunc={changeData} />
+      <button onClick={Data}>資料</button>
       <button onClick={cleanData}>清空資料</button>
     </div>
   );

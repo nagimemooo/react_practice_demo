@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import EnhancedTable from './EnhancedTable';
+import * as R from 'ramda';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -81,6 +82,10 @@ export default function SimpleTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
+        <EnhancedTable
+          data={R.filter(R.propEq('name', 'Cupcake'), props.data)}
+          changefunc={props.changefunc}
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
