@@ -96,6 +96,7 @@ export default function BasicTextFields(props) {
     }
   };
   const handleSubmit = (event) => {
+    // TODO 判斷是否重複
     if (TaskName === '') {
     }
     console.log('type' + Type);
@@ -105,7 +106,7 @@ export default function BasicTextFields(props) {
     // 用push進去 不知道為什麼無法觸發data update的 useEffect 所以也不會render conponent
     //改成下列的串接寫法就可以
     props.changefunc([...props.data, createData(TaskName, 305, 3.7, 67, 4.3)]);
-
+    //TODO
     event.preventDefault();
   };
 
@@ -113,6 +114,7 @@ export default function BasicTextFields(props) {
     setType(type);
   };
 
+  //TODO 往外拉
   const getToday = () => {
     var Today = new Date();
     //2020-10-3
