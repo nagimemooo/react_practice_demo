@@ -113,6 +113,23 @@ export default function BasicTextFields(props) {
     setType(type);
   };
 
+  const getToday = () => {
+    var Today = new Date();
+    //2020-10-3
+    //http://zhi-yuan-chenge.blogspot.com/2015/10/jsjavascript_16.html
+    //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+    //補0的三種方法
+    var dateString =
+      Today.getFullYear() +
+      '-' +
+      ('0' + (Today.getMonth() + 1)).slice(-2) +
+      '-' +
+      ('0' + Today.getDate()).slice(-2);
+
+    console.log(dateString); //2020-10-03
+    return dateString;
+  };
+
   const inputRef = useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -151,7 +168,19 @@ export default function BasicTextFields(props) {
             />
             <ErrorLabel></ErrorLabel>
           </FormControl>
-
+          <FormControl className={classes.formControl} variant="outlined">
+            <TextField
+              id="date"
+              label="開始日 Date"
+              type="date"
+              defaultValue={getToday()}
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <ErrorLabel></ErrorLabel>
+          </FormControl>
           <Button
             variant="contained"
             color="primary"
