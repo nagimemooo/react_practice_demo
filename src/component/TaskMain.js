@@ -3,12 +3,14 @@ import SimpleTabs from './SimpleTabs';
 import InputBar from './InputBar';
 import { createData, statusList } from './helper';
 import * as R from 'ramda';
+import Container from '@material-ui/core/Container';
+
 const defaultRows = [
   createData('Cupcake', 1, statusList.Open, 'blog', 4.3),
   createData('Donut', 2, statusList.InProgress, 'go', 4.9),
   createData('Eclair', 1, statusList.Open, 'go', 6.0),
   createData('Frozen yoghurt', 2, statusList.Open, 'life', 4.0),
-  createData('Cupcake', 1, statusList.Open, '', 3.9),
+  createData('Cupcake 2', 1, statusList.Open, '', 3.9),
   createData('Honeycomb', 2, statusList.Open, '', 6.5),
   createData('Ice cream sandwich', 3, statusList.Open, '', 4.3),
   createData('Jelly Bean', 3, statusList.Done, '', 0.0),
@@ -46,11 +48,11 @@ export default function TaskMain() {
   };
 
   return (
-    <div>
+    <Container maxWidth="lg">
       <InputBar data={rows} changefunc={changeData} />
       <SimpleTabs data={rows} changefunc={changeData} />
       <button onClick={Data}>資料</button>
       <button onClick={cleanData}>清空資料</button>
-    </div>
+    </Container>
   );
 }
