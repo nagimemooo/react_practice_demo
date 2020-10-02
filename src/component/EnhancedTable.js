@@ -21,6 +21,7 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import * as R from 'ramda';
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -288,7 +289,19 @@ export default function EnhancedTable(props) {
 
     setSelected(newSelected);
   };
+  const handleEditClick = (event, name) => {
+    console.log('EDIT');
+    console.log(name);
+    var f = R.findIndex(R.propEq('name', name), props.data);
+    console.log(f);
+    props.data[f].status = 'In Progress';
 
+    // var k = props.data[f];
+    // k.status = 'OK';
+    // props.data.splice(f, 1, k);
+    var newItwm = [...props.data]; //要這樣寫才會渲染
+    props.changefunc(newItwm);
+  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -369,7 +382,11 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.type}</TableCell>
                       <TableCell align="right">{row.date}</TableCell>
                       <TableCell align="right">
-                        <IconButton color="primary" aria-label="Edit icon">
+                        <IconButton
+                          color="primary"
+                          aria-label="Edit icon"
+                          onClick={(event) => handleEditClick(event, row.name)}
+                        >
                           <CreateRoundedIcon />
                         </IconButton>
                       </TableCell>
