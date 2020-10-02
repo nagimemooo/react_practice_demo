@@ -20,7 +20,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -58,6 +58,7 @@ const headCells = [
   { id: 'Status', numeric: true, disablePadding: false, label: '狀態 Status' },
   { id: 'Type', numeric: true, disablePadding: false, label: '類型 Type' },
   { id: 'Date', numeric: true, disablePadding: false, label: '日期 Date' },
+  { id: 'Action', numeric: true, disablePadding: false, label: 'Action' },
 ];
 
 function EnhancedTableHead(props) {
@@ -85,6 +86,7 @@ function EnhancedTableHead(props) {
             inputProps={{ 'aria-label': 'select all desserts' }}
           />
         </TableCell>
+
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -353,6 +355,7 @@ export default function EnhancedTable(props) {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
+
                       <TableCell
                         component="th"
                         id={labelId}
@@ -365,6 +368,11 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.status}</TableCell>
                       <TableCell align="right">{row.type}</TableCell>
                       <TableCell align="right">{row.date}</TableCell>
+                      <TableCell align="right">
+                        <IconButton color="primary" aria-label="Edit icon">
+                          <CreateRoundedIcon />
+                        </IconButton>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
