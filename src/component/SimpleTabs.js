@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -9,6 +8,8 @@ import Box from '@material-ui/core/Box';
 import EnhancedTable from './EnhancedTable';
 import { statusList } from './helper';
 import * as R from 'ramda';
+import { useStyles } from './Style/SimpleTabs_Style';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -22,9 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography component="span" component="span">
-            {children}
-          </Typography>
+          <Typography component="span">{children}</Typography>
         </Box>
       )}
     </div>
@@ -43,16 +42,6 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-  },
-  Tabs: {
-    backgroundColor: 'red',
-  },
-}));
 
 export default function SimpleTabs(props) {
   const classes = useStyles();

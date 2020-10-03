@@ -1,7 +1,8 @@
+/** @jsx jsx */ import { jsx } from '@emotion/core';
+
 import React, { useRef, useState } from 'react';
 
 import { myStyle, wd } from './Style/InputSuggest_Style';
-/** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
 const Suggest = (props) => {
   // const handleClick = () => {

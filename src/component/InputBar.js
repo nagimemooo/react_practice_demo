@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -9,61 +9,10 @@ import Input from '@material-ui/core/Input';
 import { InputAdornment, InputLabel } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import { css } from 'emotion';
-import styled from '@emotion/styled';
+
 import InputSuggest from './InputSuggest';
 import { getToday } from './helper';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 'fit-content',
-  },
-  formDiv: {
-    display: 'flex',
-    alignItems: 'center', //---排列上下置中
-  },
-  formControl: {
-    margin: '10px',
-    //marginTop: theme.spacing.unit * 2,
-    minWidth: 200,
-    maxWidth: 300,
-  },
-  button: {
-    margin: '10px',
-    width: '130px',
-  },
-  Red: {
-    color: 'red', //color: red 沒有加雙引號是錯誤寫法
-  },
-  ErrorDiv: css`
-    //不知道為什麼這種寫法引用沒效果 解析不出來
-    height: 11px;
-    font-size: 12px;
-    color: #ea645e;
-    font-weight: Regular;
-    line-height: 14px;
-    letter-spacing: 0.73px;
-    margin-top: 8px;
-  `,
-}));
-
-const ErrorLabel = styled.label`
-  //換一種寫法
-  height: 11px;
-  font-size: 12px;
-  color: #ea645e;
-  font-weight: Regular;
-  line-height: 14px;
-  letter-spacing: 0.73px;
-  margin-top: 8px;
-`;
+import { useStyles, ErrorLabel } from './Style/InputBar_Style';
 
 export default function BasicTextFields(props) {
   const classes = useStyles();
