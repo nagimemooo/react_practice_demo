@@ -54,6 +54,7 @@ export default function TaskMain() {
   return (
     <Container maxWidth="lg">
       <InputBar addOneData={addOneData} />
+      <p></p>
       <SimpleTabs data={rows} changefunc={changeData} />
       <button onClick={Data}>資料</button>
       <button onClick={cleanData}>清空資料</button>

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { makeStyles } from '@material-ui/core/styles';
+/** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,10 +12,10 @@ export const useStyles = makeStyles((theme) => ({
   form: {
     display: 'flex',
     flexDirection: 'column',
-    width: 'fit-content',
   },
   formDiv: {
     display: 'flex',
+    justifyContent: 'center', //---左右置中
     alignItems: 'center', //---排列上下置中
   },
   formControl: {
@@ -52,3 +53,17 @@ export const ErrorLabel = styled.label`
   letter-spacing: 0.73px;
   margin-top: 8px;
 `;
+
+export const myStyle = {
+  BarHead: css`
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // background-color: #515258;
+  `,
+  OutlinedInputxx: css`
+    background-color: #fff;
+  `,
+};

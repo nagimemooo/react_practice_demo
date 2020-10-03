@@ -20,6 +20,9 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+
+import DoneOutlineRoundedIcon from '@material-ui/icons/DoneOutlineRounded';
+import { green } from '@material-ui/core/colors';
 import * as R from 'ramda';
 import { useStyles, useToolbarStyles } from './Style/EnhancedTable_Style';
 function descendingComparator(a, b, orderBy) {
@@ -59,7 +62,7 @@ const headCells = [
   { id: 'Status', numeric: true, disablePadding: false, label: '狀態 Status' },
   { id: 'Type', numeric: true, disablePadding: false, label: '類型 Type' },
   { id: 'Date', numeric: true, disablePadding: false, label: '日期 Date' },
-  { id: 'Action', numeric: true, disablePadding: false, label: 'Action' },
+  { id: 'Action', numeric: true, disablePadding: false, label: '操作 Action' },
 ];
 
 function EnhancedTableHead(props) {
@@ -245,6 +248,17 @@ export default function EnhancedTable(props) {
 
     setSelected(newSelected);
   };
+  const handleNextClick = (event, name) => {
+    console.log('Naxt');
+    console.log(name);
+    var f = R.findIndex(R.propEq('name', name), props.alldata);
+    console.log(f);
+
+    props.alldata[f].status = 'In Progress';
+    var newItwm = [...props.alldata]; //要這樣寫才會渲染
+    props.changefunc(newItwm);
+  };
+
   const handleEditClick = (event, name) => {
     console.log('EDIT');
     console.log(name);
@@ -340,6 +354,13 @@ export default function EnhancedTable(props) {
                           onClick={(event) => handleEditClick(event, row.name)}
                         >
                           <CreateRoundedIcon />
+                        </IconButton>
+                        <IconButton
+                          color="primary"
+                          aria-label="Next icon"
+                          onClick={(event) => handleEditClick(event, row.name)}
+                        >
+                          <DoneOutlineRoundedIcon color="action" />
                         </IconButton>
                       </TableCell>
                     </TableRow>

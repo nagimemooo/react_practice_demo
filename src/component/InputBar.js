@@ -8,11 +8,11 @@ import { createData } from './helper';
 import Input from '@material-ui/core/Input';
 import { InputAdornment, InputLabel } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
-import { css } from 'emotion';
+/** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
 import InputSuggest from './InputSuggest';
 import { getToday } from './helper';
-import { useStyles, ErrorLabel } from './Style/InputBar_Style';
+import { useStyles, ErrorLabel, myStyle } from './Style/InputBar_Style';
 
 export default function BasicTextFields(props) {
   const classes = useStyles();
@@ -72,10 +72,10 @@ export default function BasicTextFields(props) {
     setLabelWidth(inputRef.current.offsetWidth);
   }, []);
   return (
-    <div>
+    <div css={myStyle.BarHead}>
       <form className={classes.form} noValidate autoComplete="off">
         <div className={classes.formDiv}>
-          <FormControl className={css(classes.margin, classes.textField)}>
+          <FormControl className={classes.formControl} variant="outlined">
             <InputLabel ref={inputRef} htmlFor="TaskName">
               任務 TaskName
             </InputLabel>
