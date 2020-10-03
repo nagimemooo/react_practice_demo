@@ -6,15 +6,15 @@ import * as R from 'ramda';
 import Container from '@material-ui/core/Container';
 
 const defaultRows = [
-  createData('Cupcake', 1, statusList.Open, 'blog', 4.3),
-  createData('Donut', 2, statusList.InProgress, 'go', 4.9),
-  createData('Eclair', 1, statusList.Open, 'go', 6.0),
-  createData('Frozen yoghurt', 2, statusList.Open, 'life', 4.0),
-  createData('Cupcake 2', 1, statusList.Open, '', 3.9),
-  createData('Honeycomb', 2, statusList.Open, '', 6.5),
-  createData('Ice cream sandwich', 3, statusList.Open, '', 4.3),
-  createData('Jelly Bean', 3, statusList.Done, '', 0.0),
-  createData('KitKat', 2, statusList.Open, '', 7.0),
+  createData('寫一篇部落格 for go', 1, statusList.Open, 'blog', 4.3),
+  createData('寫一篇Go ', 2, statusList.InProgress, 'go', 4.9),
+  createData('寫一篇初始化go', 1, statusList.Open, 'go', 6.0),
+  createData('練習前端table改寫', 2, statusList.Open, 'life', 4.0),
+  createData('練習前端tab改寫', 1, statusList.Open, '', 3.9),
+  createData('練習前端格式改寫', 2, statusList.Open, '', 6.5),
+  createData('前端格式整理', 3, statusList.Open, '', 4.3),
+  createData('寫一篇部落格 for 前端', 3, statusList.Done, '', 0.0),
+  createData('寫一篇部落格 for 工具', 2, statusList.Open, '', 7.0),
 ];
 
 export default function TaskMain() {
