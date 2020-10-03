@@ -22,7 +22,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 
 import DoneOutlineRoundedIcon from '@material-ui/icons/DoneOutlineRounded';
-import { green } from '@material-ui/core/colors';
+import { statusList } from './helper';
 import * as R from 'ramda';
 import { useStyles, useToolbarStyles } from './Style/EnhancedTable_Style';
 function descendingComparator(a, b, orderBy) {
@@ -253,8 +253,12 @@ export default function EnhancedTable(props) {
     console.log(name);
     var f = R.findIndex(R.propEq('name', name), props.alldata);
     console.log(f);
+    if (props.alldata[f].status === statusList.Open) {
+      props.alldata[f].status = statusList.InProgress;
+    } else if (props.alldata[f].status === statusList.InProgress) {
+      props.alldata[f].status = statusList.Done;
+    }
 
-    props.alldata[f].status = 'In Progress';
     var newItwm = [...props.alldata]; //要這樣寫才會渲染
     props.changefunc(newItwm);
   };
@@ -358,7 +362,7 @@ export default function EnhancedTable(props) {
                         <IconButton
                           color="primary"
                           aria-label="Next icon"
-                          onClick={(event) => handleEditClick(event, row.name)}
+                          onClick={(event) => handleNextClick(event, row.name)}
                         >
                           <DoneOutlineRoundedIcon color="action" />
                         </IconButton>
