@@ -13,7 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputSuggest from './InputSuggest';
 import { getToday } from './helper';
 import { useStyles, ErrorLabel, myStyle } from './Style/InputBar_Style';
-
+import { statusList } from './helper';
 export default function BasicTextFields(props) {
   const classes = useStyles();
   const [TaskName, setTaskName] = useState('');
@@ -55,7 +55,7 @@ export default function BasicTextFields(props) {
     //   createData(TaskName, Pri, 3.7, Type, 4.3),
     // ]);
 
-    props.addOneData(createData(TaskName, Pri, 3.7, Type, 4.3));
+    props.addOneData(createData(TaskName, Pri, statusList.Open, Type, 4.3));
     //TODO
     event.preventDefault();
   };
