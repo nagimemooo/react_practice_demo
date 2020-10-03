@@ -292,14 +292,10 @@ export default function EnhancedTable(props) {
   const handleEditClick = (event, name) => {
     console.log('EDIT');
     console.log(name);
-    var f = R.findIndex(R.propEq('name', name), props.data);
+    var f = R.findIndex(R.propEq('name', name), props.alldata);
     console.log(f);
-    props.data[f].status = 'In Progress';
-
-    // var k = props.data[f];
-    // k.status = 'OK';
-    // props.data.splice(f, 1, k);
-    var newItwm = [...props.data]; //要這樣寫才會渲染
+    props.alldata[f].status = 'In Progress';
+    var newItwm = [...props.alldata]; //要這樣寫才會渲染
     props.changefunc(newItwm);
   };
   const handleChangePage = (event, newPage) => {

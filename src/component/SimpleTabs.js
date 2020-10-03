@@ -80,12 +80,18 @@ export default function SimpleTabs(props) {
       </AppBar>
       <TabPanel value={value} index={0}>
         {/* Item One */}
-        <EnhancedTable data={props.data} changefunc={props.changefunc} />
+
+        <EnhancedTable
+          data={props.data}
+          alldata={props.data}
+          changefunc={props.changefunc}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
         <EnhancedTable
           data={R.filter(R.propEq('status', statusList.Open), props.data)}
+          alldata={props.data}
           changefunc={props.changefunc}
         />
       </TabPanel>
@@ -93,6 +99,7 @@ export default function SimpleTabs(props) {
         Item Three
         <EnhancedTable
           data={R.filter(R.propEq('status', statusList.InProgress), props.data)}
+          alldata={props.data}
           changefunc={props.changefunc}
         />
       </TabPanel>
@@ -100,6 +107,7 @@ export default function SimpleTabs(props) {
         Item Four
         <EnhancedTable
           data={R.filter(R.propEq('status', statusList.Done), props.data)}
+          alldata={props.data}
           changefunc={props.changefunc}
         />
       </TabPanel>
