@@ -38,8 +38,8 @@ const Suggest = (props) => {
         onFocus={handleFoucus}
         onBlur={handleBlur}
       />
-      <label htmlFor="TaskName" css={LabelCss}>
-        類型 Type
+      <label htmlFor="xx" css={LabelCss}>
+        {props.defaultValue}
       </label>
       <datalist id={randomid}>
         {props.options.map((item, idx) => (

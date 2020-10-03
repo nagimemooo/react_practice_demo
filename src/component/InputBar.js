@@ -76,6 +76,7 @@ export default function BasicTextFields(props) {
   const classes = useStyles();
   const [TaskName, setTaskName] = useState('');
   const [Type, setType] = useState('');
+  const [Pri, setPri] = useState(0);
   const [TaskNamelen, setTaskNamelen] = useState(0);
   const [isValidName, setIsValidName] = useState(true);
   const [errorText, setErrorText] = useState('');
@@ -101,6 +102,7 @@ export default function BasicTextFields(props) {
     if (TaskName === '') {
     }
     console.log('type' + Type);
+    console.log('Pri' + Pri);
     //https://stackoverflow.com/questions/57918784/javascript-react-push-to-an-array-in-usestate
     // props.data.push( createData(task, 305, 3.7, 67, 4.3))
     // props.changefunc(props.data)
@@ -110,7 +112,9 @@ export default function BasicTextFields(props) {
     //TODO
     event.preventDefault();
   };
-
+  const handlePriChange = (pri) => {
+    setPri(pri);
+  };
   const handleTypeChange = (type) => {
     setType(type);
   };
@@ -144,10 +148,17 @@ export default function BasicTextFields(props) {
 
             <ErrorLabel>{errorText}</ErrorLabel>
           </FormControl>
-
           <FormControl className={classes.formControl} variant="outlined">
             <InputSuggest
-              defaultValue="Input type"
+              defaultValue="優先度 pri."
+              options={['1', '2', '3']}
+              func={handlePriChange}
+            />
+            <ErrorLabel></ErrorLabel>
+          </FormControl>
+          <FormControl className={classes.formControl} variant="outlined">
+            <InputSuggest
+              defaultValue="類型 Type"
               options={['life', 'blog', 'front-web', 'go', 'design', 'others']}
               func={handleTypeChange}
             />
