@@ -18,6 +18,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { css } from 'emotion';
 import styled from '@emotion/styled';
 import InputSuggest from './InputSuggest';
+import { getToday } from './helper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,24 +113,6 @@ export default function BasicTextFields(props) {
 
   const handleTypeChange = (type) => {
     setType(type);
-  };
-
-  //TODO 往外拉
-  const getToday = () => {
-    var Today = new Date();
-    //2020-10-3
-    //http://zhi-yuan-chenge.blogspot.com/2015/10/jsjavascript_16.html
-    //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
-    //補0的三種方法
-    var dateString =
-      Today.getFullYear() +
-      '-' +
-      ('0' + (Today.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('0' + Today.getDate()).slice(-2);
-
-    console.log(dateString); //2020-10-03
-    return dateString;
   };
 
   const inputRef = useRef(null);
