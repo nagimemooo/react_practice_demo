@@ -2,18 +2,11 @@ import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-//import Icon from '@material-ui/core/Icon';
+
 import AddIcon from '@material-ui/icons/Add';
 import { createData } from './helper';
 import Input from '@material-ui/core/Input';
-import {
-  OutlinedInput,
-  InputAdornment,
-  InputLabel,
-  Popper,
-  List,
-  ListItem,
-} from '@material-ui/core';
+import { InputAdornment, InputLabel } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import { css } from 'emotion';
 import styled from '@emotion/styled';
@@ -108,7 +101,12 @@ export default function BasicTextFields(props) {
     // props.changefunc(props.data)
     // 用push進去 不知道為什麼無法觸發data update的 useEffect 所以也不會render conponent
     //改成下列的串接寫法就可以
-    props.changefunc([...props.data, createData(TaskName, 305, 3.7, 67, 4.3)]);
+    // props.changefunc([
+    //   ...props.data,
+    //   createData(TaskName, Pri, 3.7, Type, 4.3),
+    // ]);
+
+    props.addOneData(createData(TaskName, Pri, 3.7, Type, 4.3));
     //TODO
     event.preventDefault();
   };
@@ -150,6 +148,7 @@ export default function BasicTextFields(props) {
           </FormControl>
           <FormControl className={classes.formControl} variant="outlined">
             <InputSuggest
+              wd="300"
               defaultValue="優先度 pri."
               options={['1', '2', '3']}
               func={handlePriChange}

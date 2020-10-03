@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { myStyle } from './Style/InputSuggest_Style';
+import { myStyle, wd } from './Style/InputSuggest_Style';
 /** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
 const Suggest = (props) => {
@@ -15,6 +15,7 @@ const Suggest = (props) => {
   };
   const handleFoucus = () => {
     setLabelCss(myStyle.LableMove);
+    wd(props);
   };
 
   const handleBlur = () => {
@@ -33,7 +34,8 @@ const Suggest = (props) => {
         list={randomid} // defaultValue={props.defaultValue}
         ref={inputRef}
         id={props.id}
-        css={[myStyle.Input.base, myStyle.Input.focus]}
+        wd="300"
+        css={[myStyle.Input.base]}
         onChange={handleChangeValue}
         onFocus={handleFoucus}
         onBlur={handleBlur}

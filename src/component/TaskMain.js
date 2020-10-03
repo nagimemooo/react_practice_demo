@@ -34,6 +34,10 @@ export default function TaskMain() {
     setRows(data);
     console.log('changeData' + data);
   };
+  const addOneData = (data) => {
+    setRows([...rows, data]);
+    console.log('addOneData' + data);
+  };
 
   // 清空資料
   const cleanData = () => {
@@ -49,7 +53,7 @@ export default function TaskMain() {
 
   return (
     <Container maxWidth="lg">
-      <InputBar data={rows} changefunc={changeData} />
+      <InputBar addOneData={addOneData} />
       <SimpleTabs data={rows} changefunc={changeData} />
       <button onClick={Data}>資料</button>
       <button onClick={cleanData}>清空資料</button>

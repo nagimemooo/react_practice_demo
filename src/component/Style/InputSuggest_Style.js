@@ -1,7 +1,12 @@
 /** @jsx jsx */ import { css, jsx } from '@emotion/core';
 
 export default function AppStyle() {}
-
+export const wd = (props) => css`
+  width: ${props.wd}px;
+`;
+const base = css`
+  color: hotpink;
+`;
 export const myStyle = {
   Lable: css`
     top: 15px;
@@ -22,6 +27,8 @@ export const myStyle = {
     transition-delay: 0s;
   `,
   LableMove: css`
+    ${wd};
+    ${base};
     top: 10px;
     left: 10px;
     position: absolute;
